@@ -13,7 +13,7 @@ x === y // false
 
 上面示例中，变量 `x` 和 `y` 的类型都是 `symbol`，且都用 `Symbol()` 生成，但是它们是不相等的，因为他们都是独一无二的。
 
-## 2. unique symbol
+## 1. unique symbol
 
 symbol类型包含所有的 Symbol 值，但是无法表示某一个具体的 Symbol 值。
 
@@ -92,7 +92,7 @@ class C {
 
 上面示例中，静态只读属性 `foo` 的类型就是 `unique symbol`。注意，这时 `static` 和 `readonly` 两个限定符缺一不可，这是为了保证这个属性是固定不变的。
 
-## 3. 类型推断
+## 2. 类型推断
 
 如果变量声明时没有给出类型，TypeScript 会推断某个 Symbol 值变量的类型。
 
