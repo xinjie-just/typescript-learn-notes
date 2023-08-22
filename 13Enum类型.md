@@ -21,7 +21,7 @@ let c:Color = Color.Green; // 正确
 let c:number = Color.Green; // 正确
 ```
 
-上面示例中，变量 `c` 的类型写成 `Color` 或 `number` 都可以。但是，`Color` 类型的语义更好。
+上例中，变量 `c` 的类型写成 `Color` 或 `number` 都可以。但是，`Color` 类型的语义更好。
 
 Typescript 代码编译前:
 
@@ -91,7 +91,7 @@ enum Color {
   Blue
 }
 
-const Color = 'red'; // 报错：Enum declarations can only merge with namespace or other enum declarations. 枚举声明只能与命名空间或其他枚举声明合并。
+const Color = 'red'; // Enum declarations can only merge with namespace or other enum declarations. 枚举声明只能与命名空间或其他枚举声明合并。
 ```
 
 上例中，Enum 结构与变量同名，导致报错。
@@ -117,7 +117,7 @@ if (x === Foo.A) {}
 if (x === Bar.A) {}
 ```
 
-上面示例中，对象 `Bar` 使用了 `as const` 断言，作用就是使得它的属性无法修改。这样的话，`Foo` 和 `Bar` 的行为就很类似了，前者完全可以用后者替代，而且后者还是 JavaScript 的原生数据结构。
+上例中，对象 `Bar` 使用了 `as const` 断言，作用就是使得它的属性无法修改。这样的话，`Foo` 和 `Bar` 的行为就很类似了，前者完全可以用后者替代，而且后者还是 JavaScript 的原生数据结构。
 
 ## 1. Enum 成员的值
 
@@ -145,7 +145,7 @@ enum Color {
 enum Color {
   Red = 90,
   Green = 0.5,
-  Blue = 7n // 报错：Type 'bigint' is not assignable to type 'number' as required for computed enum member values. 类型'bigint'不能赋值给类型'number'作为计算枚举成员值的要求。
+  Blue = 7n // Type 'bigint' is not assignable to type 'number' as required for computed enum member values. 类型'bigint'不能赋值给类型'number'作为计算枚举成员值的要求。
 }
 ```
 
@@ -207,7 +207,7 @@ enum Color {
   Blue
 }
 
-Color.Red = 4; // 报错：Cannot assign to 'Red' because it is a read-only property. 不能赋值给'Red'，因为它是一个只读属性。
+Color.Red = 4; // Cannot assign to 'Red' because it is a read-only property. 不能赋值给'Red'，因为它是一个只读属性。
 ```
 
 通常会在 enum 关键字前面加上 `const` 修饰，表示这是常量，不能再次赋值。
@@ -275,7 +275,7 @@ enum Foo {
 }
 
 enum Foo {
-  B, // 报错：In an enum with multiple declarations, only one declaration can omit an initializer for its first enum element. 在具有多个声明的枚举中，只有一个声明可以省略其第一个枚举元素的初始化式。
+  B, // In an enum with multiple declarations, only one declaration can omit an initializer for its first enum element. 在具有多个声明的枚举中，只有一个声明可以省略其第一个枚举元素的初始化式。
 }
 ```
 
@@ -288,7 +288,7 @@ enum Foo {
 }
 
 enum Foo {
-  B = 1, // 报错： Duplicate identifier 'B'. 重复标识符'B'。
+  B = 1, //  Duplicate identifier 'B'. 重复标识符'B'。
   C
 }
 ```
@@ -312,7 +312,7 @@ const enum E2 {
   B = 1,
 }
 
-// 报错：Enum declarations can only merge with namespace or other enum declarations. 枚举声明只能与命名空间或其他枚举声明合并。
+// Enum declarations can only merge with namespace or other enum declarations. 枚举声明只能与命名空间或其他枚举声明合并。
 enum E3 {
   A,
 }
@@ -344,7 +344,7 @@ Direction 就是字符串枚举，每个成员的值都是字符串。
 enum Foo1 {
   A, // 0， 第一个成员不设初始值默认为 0
   B = 'hello',
-  C // 报错： Enum member must have initializer. 枚举成员必须有初始化式。
+  C //  Enum member must have initializer. 枚举成员必须有初始化式。
 }
 
 // 成员的类型可以是 number 和 string，两者可以混合在一个 Enum 中
@@ -378,11 +378,11 @@ enum Enum {
 
 ```typescript
 enum Foo {
-  A = true // 报错：Type 'boolean' is not assignable to type 'number' as required for computed enum member values. 类型“boolean”不能赋值给类型“number”，因为计算枚举成员值需要赋值。
+  A = true // Type 'boolean' is not assignable to type 'number' as required for computed enum member values. 类型“boolean”不能赋值给类型“number”，因为计算枚举成员值需要赋值。
 }
 
 enum Foo2 {
-  A = true // 报错：Type 'symbol' is not assignable to type 'number' as required for computed enum member values. 类型“symbol”不能赋值给类型“number”，因为计算枚举成员值需要赋值。
+  A = true // Type 'symbol' is not assignable to type 'number' as required for computed enum member values. 类型“symbol”不能赋值给类型“number”，因为计算枚举成员值需要赋值。
 }
 ```
 
@@ -395,10 +395,10 @@ enum MyEnum {
 }
 
 let s = MyEnum.One;
-s = 'One'; // 报错：Type '"One"' is not assignable to type 'MyEnum'.
+s = 'One'; // Type '"One"' is not assignable to type 'MyEnum'.
 ```
 
-上面示例中，变量s的类型是MyEnum，再赋值为字符串就报错。由于这个原因，如果函数的参数类型是字符串 Enum，传参时就不能直接传入字符串，而要传入 Enum 成员。
+上例中，变量s的类型是MyEnum，再赋值为字符串就报错。由于这个原因，如果函数的参数类型是字符串 Enum，传参时就不能直接传入字符串，而要传入 Enum 成员。
 
 ```typescript
 enum MyEnum {
@@ -413,7 +413,7 @@ function f(arg:MyEnum) {
 f(MyEnum['One']) // 正确
 f(MyEnum.One) // 正确
 
-f('One') // 报错： Argument of type '"One"' is not assignable to parameter of type 'MyEnum'.
+f('One') //  Argument of type '"One"' is not assignable to parameter of type 'MyEnum'.
 ```
 
 Enum 成员值可以保存一些有用的信息，所以 TypeScript 才设计了字符串 Enum。
@@ -433,7 +433,7 @@ fetch(url, {
 });
 ```
 
-上面示例中，函数 `fetch()` 的参数对象的属性 `Accept` ，只能接受一些指定的字符串。这时就很适合把字符串放进一个 Enum 结构，通过成员值来引用这些字符串。
+上例中，函数 `fetch()` 的参数对象的属性 `Accept` ，只能接受一些指定的字符串。这时就很适合把字符串放进一个 Enum 结构，通过成员值来引用这些字符串。
 
 **字符串 Enum 可以使用联合类型（union）代替。** 效果跟指定为字符串 Enum 是一样的
 
@@ -448,15 +448,15 @@ function move (where:'Up'|'Down'|'Left'|'Right') {
 ```typescript
 enum MyEnum1 {
   A = 'one',
-  B = ['1', '2', '3'].join('') // 报错：Type 'string' is not assignable to type 'number' as required for computed enum member values. 类型“string”不能按计算枚举成员值的要求赋值给类型“number”。
+  B = ['1', '2', '3'].join('') // Type 'string' is not assignable to type 'number' as required for computed enum member values. 类型“string”不能按计算枚举成员值的要求赋值给类型“number”。
 }
 enum MyEnum2 {
   A = 'one',
-  B = String(1) // 报错：Type 'string' is not assignable to type 'number' as required for computed enum member values.
+  B = String(1) // Type 'string' is not assignable to type 'number' as required for computed enum member values.
 }
 enum MyEnum3 {
   A = 123,
-  B = ['1', '2'][0] // 报错：Type 'string' is not assignable to type 'number' as required for computed enum member values.
+  B = ['1', '2'][0] // Type 'string' is not assignable to type 'number' as required for computed enum member values.
 }
 
 enum MyEnum10 {
@@ -545,7 +545,7 @@ console.log(Weekdays[3]) // Wednesday
 console.log(Weekdays['Wednesday']) // 3
 ```
 
-上面示例中，Enum 成员 `Wednesday` 的值等于 `3`，从而可以从成员值 `3` 取到对应的成员名 `Wednesday`，这是反向映射。
+上例中，Enum 成员 `Wednesday` 的值等于 `3`，从而可以从成员值 `3` 取到对应的成员名 `Wednesday`，这是反向映射。
 
 这是因为 TypeScript 会将上面的 Enum 结构，编译成下面的 JavaScript 代码。
 

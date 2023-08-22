@@ -68,8 +68,8 @@ x = 'Hello World'; // 正确
 ```typescript
 let v:unknown = 123;
 
-let v1:boolean = v; // 报错：Type 'unknown' is not assignable to type 'boolean'.
-let v2:number = v; // 报错：Type 'unknown' is not assignable to type 'number'.
+let v1:boolean = v; // Type 'unknown' is not assignable to type 'boolean'.
+let v2:number = v; // Type 'unknown' is not assignable to type 'number'.
 let v3:any = v;
 let v4:unknown = v;
 ```
@@ -79,17 +79,17 @@ let v4:unknown = v;
 ```typescript
 let v1:unknown = { foo: 123 };
 let a1:any = { foo: 123 };
-v1.foo;  // 报错：'v1' is of type 'unknown'.
+v1.foo;  // 'v1' is of type 'unknown'.
 a1.foo;
 
 let v2:unknown = 'hello';
 let a2:any = 'hello';
-v2.trim(); // 报错：'v2' is of type 'unknown'.
+v2.trim(); // 'v2' is of type 'unknown'.
 a2.trim();
 
 let v3:unknown = (n = 0) => n + 1;
 let a3:any = (n = 0) => n + 1;
-v3(); // 报错：'v3' is of type 'unknown'.
+v3(); // 'v3' is of type 'unknown'.
 a3.foo;
 ```
 
@@ -98,7 +98,7 @@ a3.foo;
 ```typescript
 let a:unknown = 1;
 
-a + 1; // 报错：'a' is of type 'unknown'.
+a + 1; // 'a' is of type 'unknown'.
 a === 1;
 ```
 
