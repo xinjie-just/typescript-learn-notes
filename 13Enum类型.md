@@ -563,7 +563,7 @@ var Weekdays;
 })(Weekdays || (Weekdays = {}));
 ```
 
-上面代码中，实际进行了两组赋值，以第一个成员为例。
+上例中，实际进行了两组赋值，以第一个成员为例。
 
 ```javascript
 Weekdays[Weekdays["Monday"] = 1] = "Monday";

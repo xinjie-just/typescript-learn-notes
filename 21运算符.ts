@@ -67,7 +67,7 @@ type MyObj9 = {
 
 type Keys9 = keyof MyObj9;
 
-type Values9 = MyObj9[Keys]; // type Values9 = string | number，MyObj9[Keys] <=> string | number
+type Values9 = MyObj9[Keys9]; // type Values9 = string | number，MyObj9[Keys9] <=> string | number
 
 
 /**
