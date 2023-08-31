@@ -98,3 +98,26 @@ class B6 extends A6 {
 const a6 = new A6();
 const b6 = new B6();
 console.log(b6.getBaseClass());
+
+/**
+ * 实例属性的简写形式
+ */
+class Point7 {
+  constructor(
+    public x:number,
+    public y:number
+  ) {}
+}
+const p7 = new Point7(10, 10);
+console.log(p7.x) // 10
+console.log(p7.y) // 10
+
+
+/**
+ * 结构类型原则
+ */
+class Person8 {
+  name: string = '';
+}
+const obj8 = { name: 'John' };
+console.log(obj8 instanceof Person8); // false
