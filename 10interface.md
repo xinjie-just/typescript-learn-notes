@@ -99,9 +99,9 @@ interface A {
 interface A {
   [prop: string]: number;
 }
-let a:A = { 1: 1 } // 正确
-let b:A = { '1': 1 } // 正确
-let c:A = { [Symbol()]: 1 } // 正确
+let a:A = { 1: 1 };          // 正确
+let b:A = { '1': 1 };        // 正确
+let c:A = { [Symbol()]: 1 }; // 正确
 ```
 
 ```typescript
@@ -109,9 +109,9 @@ let c:A = { [Symbol()]: 1 } // 正确
 interface A {
   [prop: number]: number;
 }
-let a:A = { 1: 1 } // 正确
-let b:A = { '1': 1 } // 正确
-let c:A = { [Symbol()]: 1 } // 正确
+let a:A = { 1: 1 };          // 正确
+let b:A = { '1': 1 };        // 正确
+let c:A = { [Symbol()]: 1 }; // 正确
 ```
 
 ```typescript
@@ -157,7 +157,6 @@ interface A {
   [prop: string]: number;
   [prop: number]: string; // 'number' index type 'string' is not assignable to 'string' index type 'number'.
 }
-
 interface B {
   [prop: string]: number;
   [prop: number]: number; // 正确
@@ -195,13 +194,14 @@ let bool3 = true;
 let c: C = { f: (bool3) => '12'};
 ```
 
-属性名可以采用表达式，所以下面的写法也是可以的。
+属性名可以采用表达式：
 
+```typescript
 const f = 'f';
-
 interface A {
   [f](x: boolean): string;
 }
+```
 
 （4）函数
 
@@ -287,7 +287,6 @@ interface Foo {
 interface Bar {
   id: number;
 }
-// 报错
 interface Baz extends Foo, Bar { // Named property 'id' of types 'Foo' and 'Bar' are not identical. 类型'Foo'和'Bar'的命名属性'id'不相同。
   type: string;
 }
@@ -462,7 +461,7 @@ interface Rectangle {
   area: number;
 }
 declare const s: Circle | Rectangle;
-s.area;   // bigint | number
+s.area; // bigint | number
 ```
 
 上例中，接口 `Circle` 和 `Rectangle` 组成一个联合类型 `Circle | Rectangle` 。因此，这个联合类型的同名属性 `area`，也是一个联合类型。本例中的 `declare` 命令表示变量 `s` 的具体定义，由其他脚本文件给出。
