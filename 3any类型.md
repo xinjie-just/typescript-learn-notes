@@ -6,8 +6,7 @@
 
 ```typescript
 let x:any = 'hello';
-
-x(1) // 不报错
+x(1);        // 不报错
 x.foo = 100; // 不报错
 ```
 
@@ -33,9 +32,9 @@ x.foo = 100; // 不报错
 let x:any = 'hello';
 let y:number;
 
-y = x; // 不报错
+y = x;      // 不报错
 
-y * 123 // 不报错
+y * 123;    // 不报错
 y.toFixed() // 不报错
 ```
 
@@ -52,8 +51,8 @@ y.toFixed() // 不报错
 ```typescript
 let x:unknown;
 
-x = true; // 正确
-x = 42; // 正确
+x = true;          // 正确
+x = 42;            // 正确
 x = 'Hello World'; // 正确
 ```
 
@@ -69,7 +68,7 @@ x = 'Hello World'; // 正确
 let v:unknown = 123;
 
 let v1:boolean = v; // Type 'unknown' is not assignable to type 'boolean'.
-let v2:number = v; // Type 'unknown' is not assignable to type 'number'.
+let v2:number = v;  // Type 'unknown' is not assignable to type 'number'.
 let v3:any = v;
 let v4:unknown = v;
 ```
@@ -79,7 +78,7 @@ let v4:unknown = v;
 ```typescript
 let v1:unknown = { foo: 123 };
 let a1:any = { foo: 123 };
-v1.foo;  // 'v1' is of type 'unknown'.
+v1.foo;    // 'v1' is of type 'unknown'.
 a1.foo;
 
 let v2:unknown = 'hello';
@@ -89,7 +88,7 @@ a2.trim();
 
 let v3:unknown = (n = 0) => n + 1;
 let a3:any = (n = 0) => n + 1;
-v3(); // 'v3' is of type 'unknown'.
+v3();      // 'v3' is of type 'unknown'.
 a3.foo;
 ```
 
@@ -154,8 +153,8 @@ function f():never {
   throw new Error('Error');
 }
 
-let v1:number = f(); // 不报错
-let v2:string = f(); // 不报错
+let v1:number = f();  // 不报错
+let v2:string = f();  // 不报错
 let v3:boolean = f(); // 不报错
 ```
 

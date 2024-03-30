@@ -10,7 +10,7 @@ interface Person {
 }
 ```
 
-上面示例中，定义了一个接口 `Person`，它指定一个对象模板，拥有三个属性 `firstName`、`lastName` 和 `age`。任何实现这个接口的对象，都必须部署这三个属性，并且必须符合规定的类型。
+上例中，定义了一个接口 `Person`，它指定一个对象模板，拥有三个属性 `firstName`、`lastName` 和 `age`。任何实现这个接口的对象，都必须部署这三个属性，并且必须符合规定的类型。
 
 **只要指定该接口作为对象的类型即可实现该接口。**
 
@@ -35,7 +35,7 @@ type A = Foo['a']; // type A = string
 
 上例中，Foo['a']返回属性 `a` 的类型，所以类型 `A` 就是 `string`。
 
-`interface` 可以表示对象的各种语法，它的成员有 `5` 种形式。
+`interface` 可以表示对象的各种语法，它的成员有 5 种形式：
 
 - 对象属性
 - 对象的属性索引
@@ -43,7 +43,7 @@ type A = Foo['a']; // type A = string
 - 函数
 - 构造函数
 
-（1）对象属性
+>（1）对象属性
 
 ```typescript
 interface Point {
@@ -73,7 +73,7 @@ const x: A = { a : '1' };
 x.a = '2'; // Cannot assign to 'a' because it is a read-only property.
 ```
 
-（2）对象的属性索引
+>（2）对象的属性索引
 
 ```typescript
 interface A {
@@ -81,7 +81,7 @@ interface A {
 }
 ```
 
-上面示例中，`[prop: string]` 就是属性的字符串索引，表示属性名只要是字符串，都符合类型要求。
+上例中，`[prop: string]` 就是属性的字符串索引，表示属性名只要是字符串，都符合类型要求。
 
 属性索引共有 `string`、`number` 和 `symbol` 三种类型。
 
@@ -99,9 +99,9 @@ interface A {
 interface A {
   [prop: string]: number;
 }
-let a:A = { 1: 1 } // 正确
-let b:A = { '1': 1 } // 正确
-let c:A = { [Symbol()]: 1 } // 正确
+let a:A = { 1: 1 };          // 正确
+let b:A = { '1': 1 };        // 正确
+let c:A = { [Symbol()]: 1 }; // 正确
 ```
 
 ```typescript
@@ -109,9 +109,9 @@ let c:A = { [Symbol()]: 1 } // 正确
 interface A {
   [prop: number]: number;
 }
-let a:A = { 1: 1 } // 正确
-let b:A = { '1': 1 } // 正确
-let c:A = { [Symbol()]: 1 } // 正确
+let a:A = { 1: 1 };          // 正确
+let b:A = { '1': 1 };        // 正确
+let c:A = { [Symbol()]: 1 }; // 正确
 ```
 
 ```typescript
@@ -157,16 +157,15 @@ interface A {
   [prop: string]: number;
   [prop: number]: string; // 'number' index type 'string' is not assignable to 'string' index type 'number'.
 }
-
 interface B {
   [prop: string]: number;
   [prop: number]: number; // 正确
 }
 ```
 
-上面示例中，数值索引的属性值类型与字符串索引不一致，就会报错。数值索引必须兼容字符串索引的类型声明。
+上例中，数值索引的属性值类型与字符串索引不一致，就会报错。数值索引必须兼容字符串索引的类型声明。
 
-（3）对象的方法
+>（3）对象的方法
 
 对象的方法共有三种写法。
 
@@ -195,28 +194,27 @@ let bool3 = true;
 let c: C = { f: (bool3) => '12'};
 ```
 
-属性名可以采用表达式，所以下面的写法也是可以的。
+属性名可以采用表达式：
 
+```typescript
 const f = 'f';
-
 interface A {
   [f](x: boolean): string;
 }
+```
 
-（4）函数
+>（4）函数
 
 **interface 也可以用来声明独立的函数。**
 
 ```typescript
-interface Add {
-  (x:number, y:number): number;
-}
+interface Add { (x:number, y:number): number; };
 const myAdd:Add = (x,y) => x + y;
 ```
 
-上面示例中，接口Add声明了一个函数类型。
+上例中，接口 `Add` 声明了一个函数类型。
 
-（5）构造函数
+>（5）构造函数
 
 **interface 内部可以使用 `new` 关键字，表示构造函数。**
 
@@ -226,13 +224,15 @@ interface ErrorConstructor {
 }
 ```
 
-上面示例中，接口 `ErrorConstructor` 内部有 `new` 命令，表示它是一个构造函数。
+上例中，接口 `ErrorConstructor` 内部有 `new` 命令，表示它是一个构造函数。
 
 ## 1. interface 的继承
 
 interface 可以继承其他类型，主要有下面几种情况。
 
-### 1.1. `interface` 继承 `interface`，`interface` 可以使用 `extends` 关键字，继承其他 `interface`。
+### 1.1. interface 继承 interface
+
+`interface` 可以使用 `extends` 关键字，继承其他 `interface`
 
 ```typescript
 interface Shape {
@@ -274,7 +274,7 @@ interface Foo {
 }
 interface Bar extends Foo {
   id: number;
-  // Interface 'Bar' incorrectly extends interface 'Foo'. Types of property 'id' are incompatible. Type 'number' is not assignable to type 'string'. 接口'Bar'错误地扩展了接口'Foo'。属性'id'的类型不兼容。类型'number'不能赋值给类型'string'。
+  // 接口'Bar'错误地扩展了接口'Foo'。属性'id'的类型不兼容。类型'number'不能赋值给类型'string'。
 }
 ```
 
@@ -287,8 +287,7 @@ interface Foo {
 interface Bar {
   id: number;
 }
-// 报错
-interface Baz extends Foo, Bar { // Named property 'id' of types 'Foo' and 'Bar' are not identical. 类型'Foo'和'Bar'的命名属性'id'不相同。
+interface Baz extends Foo, Bar { // 类型'Foo'和'Bar'的命名属性'id'不相同。
   type: string;
 }
 ```
@@ -322,7 +321,6 @@ type NewProps = {
 ```typescript
 class A {
   x:string = '';
-
   y():boolean {
     return true;
   }
@@ -380,7 +378,7 @@ interface A {
   a: number;
 }
 interface A {
-  a: string; // Subsequent property declarations must have the same type.  Property 'a' must be of type 'number', but here has type 'string'. 随后的属性声明必须具有相同的类型。属性'a'必须是'number'类型，但这里有'string'类型。
+  a: string; // 随后的属性声明必须具有相同的类型。属性'a'必须是'number'类型，但这里有'string'类型。
 }
 ```
 
@@ -411,12 +409,8 @@ interface Cloner {
 这个规则有一个例外。同名方法之中，如果有一个参数是字面量类型，字面量类型有更高的优先级。
 
 ```typescript
-interface A {
-  f(x:'foo'): boolean;
-}
-interface A {
-  f(x:any): void;
-}
+interface A { f(x:'foo'): boolean; }
+interface A { f(x:any): void; }
 // 等同于
 interface A {
   f(x:'foo'): boolean;
@@ -462,7 +456,7 @@ interface Rectangle {
   area: number;
 }
 declare const s: Circle | Rectangle;
-s.area;   // bigint | number
+s.area; // bigint | number
 ```
 
 上例中，接口 `Circle` 和 `Rectangle` 组成一个联合类型 `Circle | Rectangle` 。因此，这个联合类型的同名属性 `area`，也是一个联合类型。本例中的 `declare` 命令表示变量 `s` 的具体定义，由其他脚本文件给出。
@@ -490,9 +484,13 @@ interface City {
 
 interface 与 type 的区别有下面几点。
 
--（1）`type` 能够表示非对象类型，而 `interface` 只能表示对象类型（包括数组、函数等）。
+>（1）`type` 能够表示非对象类型，而 `interface` 只能表示对象类型（包括数组、函数等）。
 
--（2）`interface` 可以继承其他类型，`type` 不支持继承。
+```typescript
+type num = 1;
+```
+
+>（2）`interface` 可以继承其他类型，`type` 不支持继承。
 
 继承的主要作用是添加属性，`type` 定义的对象类型如果想要添加属性，只能使用 `&` 运算符，重新定义一个类型。
 
@@ -534,7 +532,7 @@ interface Foo {
 type Bar = Foo & { y: number; };
 ```
 
--（3）同名 `interface` 会自动合并，同名 `type` 则会报错。也就是说，**TypeScript 不允许使用 `type` 多次定义同一个类型。**
+>（3）同名 `interface` 会自动合并，同名 `type` 则会报错。 **TypeScript 不允许使用 `type` 多次定义同一个类型。**
 
 ```typescript
 interface A { foo:number };
@@ -550,39 +548,25 @@ type B = { bar:number }; // Duplicate identifier 'B'.
 
 这表明，`interface` 是开放的，可以添加属性，`type` 是封闭的，不能添加属性，只能定义新的 `type`。
 
--（4）`interface`不能包含属性映射（`mapping`），`type` 可以。
+>（4）`interface`不能包含属性映射（`mapping`），`type` 可以。
 
 ```typescript
 interface Point {
   x: number;
   y: number;
 }
-
-// 正确
-type PointCopy1 = {
-  [Key in keyof Point]: Point[Key];
-};
-
-// 报错
-interface PointCopy2 {
-  [Key in keyof Point]: Point[Key];
-};
+type PointCopy1 = { [Key in keyof Point]: Point[Key]; };    // 正确
+interface PointCopy2 { [Key in keyof Point]: Point[Key]; }; // 报错
 ```
 
--（5）this 关键字只能用于 `interface`。
+>（5）this 关键字只能用于 `interface`。
 
 ```typescript
-// 正确
-interface Foo {
-  add(num:number): this;
-};
-// 报错
-type Foo = {
-  add(num:number): this;
-};
+interface Foo { add(num:number): this; }; // 正确
+type Foo = { add(num:number): this; };    // 报错
 ```
 
-上面示例中，`type` 命令声明的方法 `add()`，返回 `this` 就报错了。`interface` 命令没有这个问题。
+上例中，`type` 命令声明的方法 `add()`，返回 `this` 就报错了。`interface` 命令没有这个问题。
 
 ```typescript
 class Calculator implements Foo {
@@ -594,26 +578,20 @@ class Calculator implements Foo {
 }
 ```
 
--（6）type 可以扩展原始数据类型，interface 不行。
+>（6）type 可以扩展原始数据类型，interface 不行。
 
 ```typescript
-// 正确
-type MyStr = string & {
-  type: 'new'
-};
-// 报错
-interface MyStr extends string {
-  type: 'new'
-}
+type MyStr = string & { type: 'new' };          // 正确
+interface MyStr extends string { type: 'new' }; // 报错
 ```
 
 上例中，type 可以扩展原始数据类型 string，interface 就不行。
 
--（7）`interface` 无法表达某些复杂类型（比如交叉类型和联合类型），但是 `type` 可以。
+>（7）`interface` 无法表达某些复杂类型（比如交叉类型和联合类型），但是 `type` 可以。
 
 ```typescript
-type A = { /* ... */ };
-type B = { /* ... */ };
+type A = { /* */ };
+type B = { /* */ };
 
 type AorB = A | B;
 type AorBWithName = AorB & {

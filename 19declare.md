@@ -39,7 +39,7 @@ x = 1; // let x: number
 
 ```typescript
 declare let x; // Variable 'x' implicitly has an 'any' type. 变量'x'隐式地具有'any'类型。
-x = 1; // let x: any
+x = 1;         // let x: any
 ```
 
 脚本使用浏览器全局对象 `document`：
@@ -282,17 +282,14 @@ declare enum E1 {
   A,
   B,
 }
-
 declare enum E2 {
   A = 0,
   B = 1,
 }
-
 declare const enum E3 {
   A,
   B,
 }
-
 declare const enum E4 {
   A = 0,
   B = 1,

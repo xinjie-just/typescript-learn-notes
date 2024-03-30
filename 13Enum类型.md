@@ -4,14 +4,14 @@ Enum（枚举）是 TypeScript 新增的一种数据结构和类型，用来将�
 
 ```typescript
 enum Color {
-    Red,     // 0
-    Green,   // 1
-    Blue     // 2
+  Red,   // 0
+  Green, // 1
+  Blue   // 2
 }
 
-console.log(Color.Red);  // 0
+console.log(Color.Red);      // 0
 console.log(Color['Green']); // 1
-console.log(Color['Blue']); // 2
+console.log(Color['Blue']);  // 2
 ```
 
 三个成员 `Red`、`Green` 和 `Blue`。第一个成员的值默认为整数 `0`，第二个为 `1`，第三个为 `2`，以此类推。调用 Enum 的某一个成员，与调用对象属性的写法一样，可以使用点运算符，也可以使用方扩号运算符。
@@ -23,7 +23,7 @@ let c:number = Color.Green; // 正确
 
 上例中，变量 `c` 的类型写成 `Color` 或 `number` 都可以。但是，`Color` 类型的语义更好。
 
-Typescript 代码编译前:
+编译前:
 
 ```typescript
 enum Color {
@@ -33,7 +33,7 @@ enum Color {
 }
 ```
 
-JavaScript 代码编译后：
+编译后：
 
 ```javascript
 "use strict";
@@ -47,7 +47,7 @@ var Color;
 
 **由于 TypeScript 的定位是 JavaScript 语言的类型增强，所以官方建议谨慎使用 Enum 结构，因为它不仅仅是类型，还会为编译后的代码加入一个对象。**
 
-Enum 结构比较适合的场景是，成员的值不重要，名字更重要，从而增加代码的可读性和可维护性。
+**Enum 结构比较适合的场景是，成员的值不重要，名字更重要，从而增加代码的可读性和可维护性。**
 
 ```typescript
 enum Operator {
@@ -76,10 +76,10 @@ function compute(
   }
 }
 
-compute(Operator.ADD, 1, 3) // 4
-compute(Operator.DIV, 6, 3) // 2
-compute(Operator.ADD, 1, 3) // 3
-compute(Operator.ADD, 3, 1) // 2
+compute(Operator.ADD, 1, 3); // 4
+compute(Operator.DIV, 6, 3); // 2
+compute(Operator.ADD, 1, 3); // 3
+compute(Operator.ADD, 3, 1); // 2
 ```
 
 **由于 Enum 结构编译后是一个对象，所以不能有与它同名的变量（包括对象、函数、类等）。**
@@ -90,7 +90,6 @@ enum Color {
   Green,
   Blue
 }
-
 const Color = 'red'; // Enum declarations can only merge with namespace or other enum declarations. 枚举声明只能与命名空间或其他枚举声明合并。
 ```
 
@@ -121,7 +120,7 @@ if (x === Bar.A) {}
 
 ## 1. Enum 成员的值
 
-Enum 成员默认不必赋值，系统会从零开始逐一递增，按照顺序为每个成员赋值，比如 0、1、2……，但是，也可以为 Enum 成员显式赋值。
+Enum 成员默认不必赋值，系统会从零开始逐一递增，按照顺序为每个成员赋值，比如 `0`、`1`、`2` ...，但是，也可以为 Enum 成员显式赋值。
 
 ```typescript
 enum Color {
@@ -138,7 +137,7 @@ enum Color {
 }
 ```
 
-成员的值可以是任意数值，但不能是大整数（Bigint）。
+**成员的值可以是任意数值，但不能是大整数（Bigint）。**
 
 ```typescript
 // Enum 成员的值可以是小数，但不能是 Bigint。
@@ -157,9 +156,9 @@ enum Color {
   Green = 0,
   Blue = 0
 }
-console.log(Color3.Red);  // 0
+console.log(Color3.Red);      // 0
 console.log(Color3['Green']); // 0
-console.log(Color3['Blue']); // 0
+console.log(Color3['Blue']);  // 0
 ```
 
 如果只设定第一个成员的值，后面成员的值就会从这个值开始递增。
@@ -170,18 +169,18 @@ enum Color4 {
   Green,
   Blue
 }
-console.log(Color4.Red);  // 7
+console.log(Color4.Red);      // 7
 console.log(Color4['Green']); // 8
-console.log(Color4['Blue']); // 9
+console.log(Color4['Blue']);  // 9
 
 enum Color5 {
   Red,
   Green = 7,
   Blue
 }
-console.log(Color5.Red);  // 0
+console.log(Color5.Red);      // 0
 console.log(Color5['Green']); // 7
-console.log(Color5['Blue']); // 8
+console.log(Color5['Blue']);  // 8
 ```
 
 Enum 成员的值也可以使用计算式，和函数的返回值。
@@ -198,7 +197,7 @@ enum MyEnum2 {
 }
 ```
 
-Enum 成员值都是只读的，不能重新赋值。
+**Enum 成员值都是只读的，不能重新赋值。**
 
 ```typescript
 enum Color {
@@ -250,11 +249,9 @@ const z = 2 /* Color.Blue */;
 enum Foo {
   A,
 }
-
 enum Foo {
   B = 1,
 }
-
 enum Foo {
   C = 2,
 }
@@ -325,7 +322,7 @@ const enum E3 {
 
 ## 3. 字符串 Enum
 
-Enum 成员的值除了设为数值，还可以设为字符串。也就是说，Enum 也可以用作一组相关字符串的集合。
+**Enum 成员的值除了设为数值，还可以设为字符串。** 也就是说，Enum 也可以用作一组相关字符串的集合。
 
 ```typescript
 enum Direction {
@@ -336,7 +333,7 @@ enum Direction {
 }
 ```
 
-Direction 就是字符串枚举，每个成员的值都是字符串。
+`Direction` 就是字符串枚举，每个成员的值都是字符串。
 
 **字符串枚举的所有成员值，都必须显式设置。如果没有设置，成员值默认为数值，且位置必须在字符串成员之前。**
 
@@ -380,7 +377,6 @@ enum Enum {
 enum Foo {
   A = true // Type 'boolean' is not assignable to type 'number' as required for computed enum member values. 类型“boolean”不能赋值给类型“number”，因为计算枚举成员值需要赋值。
 }
-
 enum Foo2 {
   A = true // Type 'symbol' is not assignable to type 'number' as required for computed enum member values. 类型“symbol”不能赋值给类型“number”，因为计算枚举成员值需要赋值。
 }
@@ -410,10 +406,10 @@ function f(arg:MyEnum) {
   return 'arg is ' + arg;
 }
 
-f(MyEnum['One']) // 正确
-f(MyEnum.One) // 正确
+f(MyEnum['One']); // 正确
+f(MyEnum.One); // 正确
 
-f('One') //  Argument of type '"One"' is not assignable to parameter of type 'MyEnum'.
+f('One'); //  Argument of type '"One"' is not assignable to parameter of type 'MyEnum'.
 ```
 
 Enum 成员值可以保存一些有用的信息，所以 TypeScript 才设计了字符串 Enum。
@@ -438,9 +434,7 @@ fetch(url, {
 **字符串 Enum 可以使用联合类型（union）代替。** 效果跟指定为字符串 Enum 是一样的
 
 ```typescript
-function move (where:'Up'|'Down'|'Left'|'Right') {
-  // ...
-}
+function move (where:'Up'|'Down'|'Left'|'Right') { /* */ }
 ```
 
 **字符串 Enum 的成员值，不能使用字符串表达式赋值。可以使用数值表达式、函数返回值，和可以转换为数值的计算值。**
@@ -528,7 +522,7 @@ type Foo13 = { [key in MyEnum]: number }; // type Foo13 = { a: number; b: number
 
 ## 5. 反向映射
 
-**数值 Enum 存在反向映射，即可以通过成员值获得成员名。**
+**数值 Enum 存在反向映射，即可以通过成员值获得成员名。** 字符串 Enum 不存在反向隐射。
 
 ```typescript
 enum Weekdays {
@@ -541,8 +535,8 @@ enum Weekdays {
   Sunday
 }
 
-console.log(Weekdays[3]) // Wednesday
-console.log(Weekdays['Wednesday']) // 3
+console.log(Weekdays[3]); // Wednesday
+console.log(Weekdays['Wednesday']); // 3
 ```
 
 上例中，Enum 成员 `Wednesday` 的值等于 `3`，从而可以从成员值 `3` 取到对应的成员名 `Wednesday`，这是反向映射。

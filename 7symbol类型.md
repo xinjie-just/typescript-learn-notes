@@ -1,4 +1,4 @@
-# symbol 类型
+# Symbol 类型
 
 Symbol 是 ES2015 新引入的一种原始类型的值。它类似于字符串，但是每一个 Symbol 值都是独一无二的，与其他任何值都不相等。
 
@@ -8,10 +8,10 @@ Symbol 是 ES2015 新引入的一种原始类型的值。它类似于字符串�
 let x:symbol = Symbol();
 let y:symbol = Symbol();
 
-x === y // false
+x === y; // false
 ```
 
-上例中，变量 `x` 和 `y` 的类型都是 `symbol`，且都用 `Symbol()` 生成，但是它们是不相等的，因为他们都是独一无二的。
+上例中，变量 `x` 和 `y` 的类型都是 `Symbol`，且都用 `Symbol()` 生成，但是它们是不相等的，因为他们都是独一无二的。
 
 ## 1. unique symbol
 
@@ -35,6 +35,7 @@ const x:unique symbol = Symbol();
 // 等同于
 const x = Symbol();
 ```
+
 每个声明为unique symbol类型的变量，它们的值都是不一样的，其实属于两个值类型。
 
 ```typescript
